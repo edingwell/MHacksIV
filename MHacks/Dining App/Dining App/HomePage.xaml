@@ -30,30 +30,30 @@
         <Grid x:Name="body" HorizontalAlignment="Center" Height="538" VerticalAlignment="Top" Width="400" Margin="0,119,0,0">
             <ListView 
                 HorizontalAlignment="Left" 
-                Height="362" 
-                Margin="59,59,0,0" 
+                Height="429" 
+                Margin="59,40,0,0" 
                 VerticalAlignment="Top" 
                 Width="300">
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">Bursley</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" DataContext="Bursley" Click="HyperlinkButton_Click1">Bursley</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">East Quad</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click2">East Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">Hill Dining Center</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click3">Hill Dining Center</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">Markley</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click4">Markley</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">North Quad</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click5">North Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">South Quad</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click6">South Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton Click="HyperlinkButton_Click">Twigs at Oxford</HyperlinkButton>
+                    <HyperlinkButton FontSize="40" Click="HyperlinkButton_Click7">Twigs at Oxford</HyperlinkButton>
                 </ListViewItem>
             </ListView>
         </Grid>

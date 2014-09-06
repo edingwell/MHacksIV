@@ -9,6 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -36,36 +37,51 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            string dinHallName = Convert.ToString(e.Parameter);
+            nameBlock.Text = dinHallName;
+            nameBlock.FontSize = 50;
+
             // We're going to load the whole menu here!
             List<string> words = new List<string>();
-            words.Add("One");
-            words.Add("Two");
-            words.Add("Three");
-            words.Add("Four");
-            words.Add("Five");
-            words.Add("Six");
-            words.Add("Seven");
-            words.Add("Eight");
-            words.Add("Nine");
-            words.Add("Ten");
-            words.Add("Eleven");
-            words.Add("Twelve");
-            words.Add("Thirteen");
-            words.Add("Fourteen");
-            words.Add("Fifteen");
-            words.Add("Sixteen");
+            words.Add("One\n");
+            words.Add("Two\n");
+            words.Add("Three\n");
+            words.Add("Four\n");
+            words.Add("Five\n");
+            words.Add("Six\n");
+            words.Add("Seven\n");
+            words.Add("Eight\n");
+            words.Add("Nine\n");
+            words.Add("Ten\n");
+            words.Add("Eleven\n");
+            words.Add("Twelve\n");
+            words.Add("Thirteen\n");
+            words.Add("Fourteen\n");
+            words.Add("Fifteen\n");
+            words.Add("Sixteen\n");
 
-            double marginAboveSoFar = 10;
+            //double marginAboveSoFar = 10;
             foreach (string s in words)
             {
-                TextBlock t = new TextBlock();
-                t.Text = s;
-                t.FontSize = 50;
-                t.Margin = new Thickness(70, marginAboveSoFar, 0, 0);
-                marginAboveSoFar += 50;
-                innerGrid.Children.Add(t);
-                
+                //TextBlock t = new TextBlock();
+                //t.Text = s;
+                //t.FontSize = 50;
+                //t.Margin = new Thickness(70, marginAboveSoFar, 0, 0);
+               // marginAboveSoFar += 50;
+                Run r = new Run();
+                r.Text = s;
+                r.FontSize = 50;
+                innerGrid.Inlines.Add(r); //try this
             }
+            /*
+            for (int i = 0; i < 30; i++)
+            {
+                Run r = new Run();
+                r.Text = "Thirteen";
+                r.FontSize = 50;
+                innerGrid.Inlines.Add(r); //try this
+            }
+              */
             //mainScroll.ActualHeight = 2000;
         }
             

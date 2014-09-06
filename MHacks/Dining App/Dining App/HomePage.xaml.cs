@@ -112,13 +112,40 @@ namespace Dining_App
 
         }
 
-        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        private void HyperlinkButton_Click1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage));
+            this.Frame.Navigate(typeof(MenuPage), "Bursley");
         }
 
+        private void HyperlinkButton_Click2(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "East Quad");
+        }
 
+        private void HyperlinkButton_Click3(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "Hill Dining Center");
+        }
 
+        private void HyperlinkButton_Click4(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "Markley");
+        }
+
+        private void HyperlinkButton_Click5(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "North Quad");
+        }
+
+        private void HyperlinkButton_Click6(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "South Quad");
+        }
+
+        private void HyperlinkButton_Click7(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage), "Twigs at Oxford");
+        }
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
         /// page is discarded from the navigation cache. Values must conform to the serialization
