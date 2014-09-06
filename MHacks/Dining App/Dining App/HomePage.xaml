@@ -35,25 +35,25 @@
                 VerticalAlignment="Top" 
                 Width="300">
                 <ListViewItem>
-                    <HyperlinkButton>Bursley</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">Bursley</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>East Quad</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">East Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>Hill Dining Center</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">Hill Dining Center</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>Markley</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">Markley</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>North Quad</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">North Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>South Quad</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">South Quad</HyperlinkButton>
                 </ListViewItem>
                 <ListViewItem>
-                    <HyperlinkButton>Twigs at Oxford</HyperlinkButton>
+                    <HyperlinkButton Click="HyperlinkButton_Click">Twigs at Oxford</HyperlinkButton>
                 </ListViewItem>
             </ListView>
         </Grid>

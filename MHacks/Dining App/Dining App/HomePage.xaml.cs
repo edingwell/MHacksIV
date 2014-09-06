@@ -76,7 +76,7 @@ namespace Dining_App
             //mainHallList.ItemsSource = b;
             
 
-
+            
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
@@ -111,6 +111,12 @@ namespace Dining_App
         {
 
         }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MenuPage));
+        }
+
 
 
         /// <summary>

@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="Dining_App.MenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Dining_App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button x:Name="backButton" Content="Back" HorizontalAlignment="Left" Height="67" Margin="10,0,0,0" VerticalAlignment="Top" Width="136" Click="backButton_Click"/>
+        <ScrollViewer x:Name="mainScroll" HorizontalAlignment="Left" Height="578" VerticalAlignment="Top" Width="400" Margin="0,62,0,0">
+            <Grid x:Name="innerGrid" Height="538" Width="366"/>
+            <!--<TextBlock x:Name="innerGrid">-->
+                <!--<TextBlock.Inlines></TextBlock.Inlines>-->
+                
+            <!--</TextBlock>-->
+        </ScrollViewer>
+        <ScrollBar HorizontalAlignment="Left" Margin="355,161,0,0" VerticalAlignment="Top" Height="353"/>
+    </Grid>
+</Page>
