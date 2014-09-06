@@ -37,20 +37,20 @@ namespace Dining_App
         public MainPage()
         {
 
-            var test = new BigData();
-            //test.GetMenu("http://bing.com");
-
-
             this.InitializeComponent();
-
+            this.loadData();
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            //this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-
+        private async void loadData()
+        {
+            var test = new BigData();
+            await test.GetMenus();
+        }
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
         /// </summary>
@@ -105,8 +105,21 @@ namespace Dining_App
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             //var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-1");
             //this.DefaultViewModel[FirstGroupName] = sampleDataGroup;
+
         }
 
+        /// <summary>
+        /// Preserves state associated with this page in case the application is suspended or the
+        /// page is discarded from the navigation cache. Values must conform to the serialization
+        /// requirements of <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/>.</param>
+        /// <param name="e">Event data that provides an empty dictionary to be populated with
+        /// serializable state.</param>
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+            // TODO: Save the unique state of the page here.
+        }
         private void appTitle_TextChanged(object sender, TextChangedEventArgs e)
         {
 

@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Text;
 using System.Net.Http;
+using Windows.Data.Xml.Dom;
 
 namespace Dining_App.Data
 {
@@ -28,33 +29,67 @@ namespace Dining_App.Data
                                         "Twigs at Oxford" };
         private List<DiningHall> _diningHallList;
         private List<SearchResult> _searchResults;
+        private int _curDate;
 
         // This function gets the menu from the url
-        private async Task<string> GetMenu(string url)
+        public async Task GetMenus()
         {
-            var client = new HttpClient();
-            return await client.GetStringAsync(url);
+            for(int i=0; i<this._diningHallList.Count(); ++i)
+            {
+                string url = this._createURL(this._curDate, i);
+                string menuFromOnline = await new HttpClient().GetStringAsync(url);
+                this._diningHallList[i].addMenu(this._curDate);
+                this.parseMenu(this._diningHallList[i], menuFromOnline);
+            }
         }   
+
+        private void parseMenu(DiningHall diningHall, string xmlMenu)
+        {
+            
+            XmlDocument XML = new XmlDocument();
+            XML.LoadXml(xmlMenu);
+            XmlNodeList Meals = XML.GetElementsByTagName("meal");
+            
+            //find breakfast, lunch, and dinner
+            for(int i=0; i<Meals.Count(); ++i)
+            {
+                IXmlNode curNode = Meals[i];
+                if (curNode.FirstChild.FirstChild.NodeValue.Equals("BREAKFAST"))
+                {
+                    IXmlNode sibling = curNode.FirstChild.NextSibling;
+                    for (int j=1; j<curNode.ChildNodes.Count(); ++j)
+                    {
+                        if (sibling.LocalName.Equals("course"))
+                        {
+                            //another for loop?
+                            diningHall.addtoMenu(0, sibling.FirstChild.FirstChild.NodeValue.ToString());
+                        }
+                        sibling = sibling.NextSibling;
+                    }
+                }
+                else if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("LUNCH"))
+                {
+
+                }
+                else if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("DINNER"))
+                {
+
+                }
+            }
+
+ 
+        }
 
         public BigData()
         {
             this._diningHallList = new List<DiningHall>();
             this._searchResults = new List<SearchResult>();
-
-            int countForEnum = 0;
             foreach (string name in BigData.hallNames)
             {
                 var newDiningHall = new DiningHall(name);
-                string url = _createURL(0, countForEnum);
-                var menuFromOnline = GetMenu(url); //Need to test if this works
-
-                //The following line should parse the menu and place the results in newDiningHall
-                //MenuParse.xmlMenuParse(newDiningHall, menuFromOnline.ToString);
+                string url = _createURL(0, this._diningHallList.Count());
                 this._diningHallList.Add(newDiningHall);
-                countForEnum++;
-            }
-            
-                       
+            }                     
         }
 
         public List<string> getDiningHallNames()
@@ -77,10 +112,10 @@ namespace Dining_App.Data
             switch (Name)
             {
                 case (int)Halls.BURSLEY:
-                    location = "BURSLEY%20%DINING%20HALL";
+                    location = "BURSLEY%20DINING%20HALL";
                     break;
                 case (int)Halls.EQUAD:
-                    location = "EAST%20QUAD%DINING%20HALL";
+                    location = "EAST%20QUAD%20DINING%20HALL";
                     break;
                 case (int)Halls.HILL:
                     location = "HILL%20DINING%20CENTER";
@@ -110,7 +145,7 @@ namespace Dining_App.Data
                 date = "today";
                 //TODO: add parsing for other days
             }
-
+                   http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=TWIGS%20AT%20OXFORD&date=today
             url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date;
             return url;
         }
@@ -132,12 +167,17 @@ namespace Dining_App.Data
             this._menu = new List<Menu>();
         }
 
-        public void addMenu(int Day, Menu NewMenu) //add menu to days menu only if it is the next day, if its not then we've done somethign wrong
+        public void addMenu(int Day) //add menu to days menu only if it is the next day, if its not then we've done somethign wrong
         {
             if (Day == this._menu.Count())
             {
-                this._menu.Add(NewMenu);
+                this._menu.Add(new Menu());
             }
+        }
+
+        public void addtoMenu(int meal, string foodName)
+        {
+
         }
 
         public void setName(string Name) //shouldn't ever need to use this, should be setting name with the constructor
