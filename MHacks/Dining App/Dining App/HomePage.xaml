@@ -17,27 +17,15 @@
             </NavigationThemeTransition>
         </TransitionCollection>
     </Page.Transitions>
-    
-    <Grid>
-        <Pivot 
-            x:Uid="Home" 
-            Title="MICHIGAN DINING" 
-            x:Name="home">
-            <!--Pivot Item-->
-            <PivotItem
-                x:Uid="PivotItem1"
-                Margin="19,14.5,0,0"
-                Header="TODAYS DATE"
-                DataContext="{Binding DiningHallList}">
-                <ListView
-                    ItemsSource="{Binding Items}"
-                    IsItemClickEnabled="True"
-                    ItemClick="ItemView_ItemClick">
-                    
-                </ListView>
-                
-            </PivotItem>
-        </Pivot>
 
+    <Grid Margin="0,-16.667,0,-0.333">
+
+        <StackPanel HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="400" Margin="0,27,0,0">
+            <TextBox x:Name="appTitle" Margin="0" TextWrapping="Wrap" Text="Michigan Dining" VerticalAlignment="Stretch" TextChanged="appTitle_TextChanged" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Center" Height="575" VerticalAlignment="Top" Width="390" Margin="0,72,0,0">
+            <TextBox x:Name="date" HorizontalAlignment="Center" Margin="10,-6,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="380" Background="{x:Null}" Foreground="White" TextAlignment="Center" BorderBrush="{x:Null}"/>
+            <ListView x:Name="diningHalls" HorizontalAlignment="Left" Height="534" VerticalAlignment="Top" Width="361" Margin="19,31,0,0"/>
+        </Grid>
     </Grid>
 </Page>

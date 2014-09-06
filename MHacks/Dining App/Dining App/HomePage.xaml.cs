@@ -1,6 +1,5 @@
-﻿using Dining_App.Common;
+﻿using Dining_App;
 using Dining_App.Common;
-using Dining_App.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,10 +43,6 @@ namespace Dining_App
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Gets the <see cref="NavigationHelper"/> associated with this <see cref="Page"/>.
@@ -87,8 +82,8 @@ namespace Dining_App
         private async void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-1");
-            this.DefaultViewModel[FirstGroupName] = sampleDataGroup;
+            //var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-1");
+            //this.DefaultViewModel[FirstGroupName] = sampleDataGroup;
         }
 
         /// <summary>
@@ -99,14 +94,8 @@ namespace Dining_App
         /// <param name="sender">The source of the event; typically <see cref="NavigationHelper"/>.</param>
         /// <param name="e">Event data that provides an empty dictionary to be populated with
         /// serializable state.</param>
-        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
-        {
-            // TODO: Save the unique state of the page here.
-        }
 
-        private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
-        {
 
-        }
+
     }
 }
