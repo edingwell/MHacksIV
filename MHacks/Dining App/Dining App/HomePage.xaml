@@ -23,9 +23,18 @@
         <StackPanel HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="400" Margin="0,27,0,0">
             <TextBox x:Name="appTitle" Margin="0" TextWrapping="Wrap" Text="Michigan Dining" VerticalAlignment="Stretch" TextChanged="appTitle_TextChanged" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
         </StackPanel>
-        <Grid HorizontalAlignment="Center" Height="575" VerticalAlignment="Top" Width="390" Margin="0,72,0,0">
-            <TextBox x:Name="date" HorizontalAlignment="Center" Margin="10,-6,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" Width="380" Background="{x:Null}" Foreground="White" TextAlignment="Center" BorderBrush="{x:Null}"/>
-            <ListView x:Name="diningHalls" HorizontalAlignment="Left" Height="534" VerticalAlignment="Top" Width="361" Margin="19,31,0,0"/>
+        <Grid HorizontalAlignment="Center" Height="42" VerticalAlignment="Top" Width="350" Margin="27,72,23,0">
+            <Button x:Name="todayButton" Content="Today" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="68,-6,0,-9"/>
+            <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="182,-6,0,-9"/>
         </Grid>
+        <Grid x:Name="body" HorizontalAlignment="Center" Height="538" VerticalAlignment="Top" Width="400" Margin="0,119,0,0">
+            <ListView HorizontalAlignment="Left" Height="362" Margin="98,59,0,0" VerticalAlignment="Top" Width="216">
+                <ItemsControl Height="100" Width="100">
+                    <ListViewItem/>
+                    <ListViewItem/>
+                </ItemsControl>
+            </ListView>
+        </Grid>
+
     </Grid>
 </Page>

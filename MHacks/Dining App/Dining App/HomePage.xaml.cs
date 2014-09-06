@@ -32,15 +32,19 @@ namespace Dining_App
 
         private const string FirstGroupName = "DiningHallList";
 
+        private string hallName;
+
         public MainPage()
         {
+            hallName = "Bursley";
+
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
-            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            //this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
 
@@ -61,11 +65,25 @@ namespace Dining_App
         {
             // TODO: Prepare page for display here.
 
+            ListView mainHallList = new ListView();
+            mainHallList.IsItemClickEnabled = true;
+            mainHallList.ItemClick += mainHallList_ItemClick;
+            //ItemsControl mainHallItems = new ItemsControl();
+            Binding b = new Binding();
+            mainHallList.ItemsSource = b;
+            
+
+
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void mainHallList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -85,6 +103,12 @@ namespace Dining_App
             //var sampleDataGroup = await SampleDataSource.GetGroupAsync("Group-1");
             //this.DefaultViewModel[FirstGroupName] = sampleDataGroup;
         }
+
+        private void appTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
 
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
