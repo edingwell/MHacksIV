@@ -1,7 +1,7 @@
 ﻿<Application
-    x:Class="MichiganDining.App"
+    x:Class="Dining_App.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MichiganDining">
+    xmlns:local="using:Dining_App">
 
 </Application>
