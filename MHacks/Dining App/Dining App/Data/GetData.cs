@@ -9,28 +9,49 @@ using Windows.Storage;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Text;
+using System.Net.Http;
 
 namespace Dining_App.Data
 {
     enum Halls {BURSLEY, EQUAD, HILL, MARKLEY, NQUAD, SQUAD, TWIGS};
     enum Meals {BREAKFAST, LUNCH, DINNER};
 
+
     class BigData
     {
-        static string[] hallNames = { "Bursley", "East Quad", "Hill Dining Center", "Markley", "North Quad", "South Quad", "Twigs at Oxford" };
+        static string[] hallNames = { "Bursley", 
+                                        "East Quad", 
+                                        "Hill Dining Center", 
+                                        "Markley", 
+                                        "North Quad", 
+                                        "South Quad", 
+                                        "Twigs at Oxford" };
         private List<DiningHall> _diningHallList;
         private List<SearchResult> _searchResults;
-        
+
+        // This function gets the menu from the url
+        private async Task<string> GetMenu(string url)
+        {
+            var client = new HttpClient();
+            return await client.GetStringAsync(url);
+        }   
+
         public BigData()
         {
             this._diningHallList = new List<DiningHall>();
             this._searchResults = new List<SearchResult>();
 
+            int countForEnum = 0;
             foreach (string name in BigData.hallNames)
             {
-                this._diningHallList.Add(new DiningHall(name));
-                
+                var newDiningHall = new DiningHall(name);
+                string url = _createURL(0, countForEnum);
+                var menuFromOnline = GetMenu(url); //Need to test if this works
 
+                //The following line should parse the menu and place the results in newDiningHall
+                //MenuParse.xmlMenuParse(newDiningHall, menuFromOnline.ToString);
+                this._diningHallList.Add(newDiningHall);
+                countForEnum++;
             }
             
                        

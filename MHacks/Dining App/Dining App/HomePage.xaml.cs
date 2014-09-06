@@ -1,5 +1,6 @@
 ﻿using Dining_App;
 using Dining_App.Common;
+using Dining_App.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,11 +33,13 @@ namespace Dining_App
 
         private const string FirstGroupName = "DiningHallList";
 
-        private string hallName;
 
         public MainPage()
         {
-            hallName = "Bursley";
+
+            var test = new BigData();
+            //test.GetMenu("http://bing.com");
+
 
             this.InitializeComponent();
 
@@ -69,8 +72,8 @@ namespace Dining_App
             mainHallList.IsItemClickEnabled = true;
             mainHallList.ItemClick += mainHallList_ItemClick;
             //ItemsControl mainHallItems = new ItemsControl();
-            Binding b = new Binding();
-            mainHallList.ItemsSource = b;
+            //Binding b = new Binding();
+            //mainHallList.ItemsSource = b;
             
 
 
