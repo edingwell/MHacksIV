@@ -29,19 +29,21 @@
             <TextBox x:Name="foodItem" 
                      Width="250px"
                      Header="Food Item"
-                     Margin="71,10,79,0" 
+                     Margin="71,10,79,0"
+                     HorizontalAlignment="Left"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"/>
-            <TextBox x:Name="dateThrough" HorizontalAlignment="Left" 
+            <TextBox x:Name="dateThrough" 
                      Margin="71,101,79,0" 
                      Header="Within how many days? (1 = today)"
                      TextWrapping="Wrap" 
+                     HorizontalAlignment="Left"
                      VerticalAlignment="Top" 
-                     Width="259" Text="1"/>
+                     Width="250" Text="1"/>
             <Button x:Name="searchButton" Content="Search!" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.121,-0.326" Click="searchButton_Click"/>
 
 
         </Grid>
-        <Button Content="Back" HorizontalAlignment="Left" Margin="20,98,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Click="Button_Click" Height="31" Width="98"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="36,98,0,0" VerticalAlignment="Top" Click="Button_Click" Height="31" Width="150"/>
     </Grid>
 </Page>
