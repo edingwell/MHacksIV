@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using Windows.Data.Json;
 using Windows.Storage;
 using Windows.UI.Xaml.Media;
@@ -11,6 +12,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using System.Text;
 using System.Net.Http;
 using Windows.Data.Xml.Dom;
+
 
 namespace Dining_App.Data
 {
@@ -45,18 +47,44 @@ namespace Dining_App.Data
 
         private void parseMenu(DiningHall diningHall, string xmlMenu)
         {
-            
-            XmlDocument XML = new XmlDocument();
-            XML.LoadXml(xmlMenu);
-            XmlNodeList Meals = XML.GetElementsByTagName("meal");
-            
-            //find breakfast, lunch, and dinner
-            for(int i=0; i<Meals.Count(); ++i)
+            XElement XML = XElement.Parse(xmlMenu);
+
+            XElement Menu = XML.Element("menu");
+            XElement Breakfast = Menu.Element("meal");
+            IEnumerable<XElement> Courses = Breakfast.Descendants("course");
+
+            foreach (XElement item in Courses)
             {
-                IXmlNode curNode = Meals[i];
-                if (curNode.FirstChild.FirstChild.NodeValue.Equals("BREAKFAST"))
+                IEnumerable<XElement> Food = Courses.Descendants("menuitem");
+                foreach (XElement food in Food)
                 {
-                    IXmlNode sibling = curNode.FirstChild.NextSibling;
+                    diningHall.addtoMenu(0, food.Element("name").Value);
+                }
+            }
+
+            //XmlDocument XML = new XmlDocument();
+            //XML.LoadXml(xmlMenu);
+            //XmlNodeList Meals = XML.GetElementsByTagName("meal");
+
+            //find breakfast, lunch, and dinner
+            /*for(int i=0; i<Meals.Count(); ++i)
+            {
+                var node = Meals[i].ChildNodes;
+                XDocument.Parse77
+               // if node.NodeName.Equals()
+                if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("BREAKFAST"))
+                {
+                    XmlDocument Breakfast = new XmlDocument();
+                    //Breakfast
+                    //                    XmlNode
+                    XmlNodeList Food = XML.GetElementsByTagName("menuitem");
+
+                    for(int j=0; j<Food.Count(); ++j) 
+                    {.
+                        diningHall.addtoMenu(0, Food[j].FirstChild.FirstChild.NodeValue.ToString());
+                    }
+
+                    /*IXmlNode sibling = curNode.FirstChild.NextSibling;
                     for (int j=1; j<curNode.ChildNodes.Count(); ++j)
                     {
                         if (sibling.LocalName.Equals("course"))
@@ -75,8 +103,7 @@ namespace Dining_App.Data
                 {
 
                 }
-            }
-
+            */
  
         }
 
@@ -145,7 +172,6 @@ namespace Dining_App.Data
                 date = "today";
                 //TODO: add parsing for other days
             }
-                   http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=TWIGS%20AT%20OXFORD&date=today
             url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date;
             return url;
         }
