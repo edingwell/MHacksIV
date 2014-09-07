@@ -16,8 +16,8 @@ using Windows.Data.Xml.Dom;
 
 namespace Dining_App.Data
 {
-    enum Halls {BURSLEY, EQUAD, HILL, MARKLEY, NQUAD, SQUAD, TWIGS};
-    enum Meals {BREAKFAST, LUNCH, DINNER};
+    enum Halls { BURSLEY, EQUAD, HILL, MARKLEY, NQUAD, SQUAD, TWIGS };
+    enum Meals { BREAKFAST, LUNCH, DINNER };
 
 
     class BigData
@@ -30,20 +30,20 @@ namespace Dining_App.Data
                                         "South Quad", 
                                         "Twigs at Oxford" };
         private List<DiningHall> _diningHallList;
-        private List<SearchResult> _searchResults;
+        private List<SearchHit> _searchResults;
         private int _curDate;
 
         // This function gets the menu from the url
         public async Task GetMenus()
         {
-            for(int i=0; i<this._diningHallList.Count(); ++i)
+            for (int i = 0; i < this._diningHallList.Count(); ++i)
             {
                 string url = this._createURL(this._curDate, i);
                 string menuFromOnline = await new HttpClient().GetStringAsync(url);
                 this._diningHallList[i].addMenu(this._curDate);
                 this.parseMenu(this._diningHallList[i], menuFromOnline);
             }
-        }   
+        }
 
         private void parseMenu(DiningHall diningHall, string xmlMenu)
         {
@@ -51,84 +51,76 @@ namespace Dining_App.Data
 
             XElement Menu = XML.Element("menu");
             XElement Breakfast = Menu.Element("meal");
-            IEnumerable<XElement> Courses = Breakfast.Descendants("course");
-
-            foreach (XElement item in Courses)
+            IEnumerable<XElement> BCourses = Breakfast.Elements("course");
+            IEnumerable<XElement> Food = BCourses.Elements("menuitem");
+            foreach (XElement food in Food)
             {
-                IEnumerable<XElement> Food = Courses.Descendants("menuitem");
-                foreach (XElement food in Food)
-                {
-                    diningHall.addtoMenu(0, food.Element("name").Value);
-                }
+                XElement Name = food.Element("name");
+                diningHall.addtoMenu(0, Name.Value);
             }
 
-            //XmlDocument XML = new XmlDocument();
-            //XML.LoadXml(xmlMenu);
-            //XmlNodeList Meals = XML.GetElementsByTagName("meal");
-
-            //find breakfast, lunch, and dinner
-            /*for(int i=0; i<Meals.Count(); ++i)
+            XElement Lunch = (XElement)Breakfast.NextNode;
+            IEnumerable<XElement> LCourses = Lunch.Elements("course");
+            IEnumerable<XElement> LFood = LCourses.Elements("menuitem");
+            foreach (XElement food in LFood)
             {
-                var node = Meals[i].ChildNodes;
-                XDocument.Parse77
-               // if node.NodeName.Equals()
-                if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("BREAKFAST"))
-                {
-                    XmlDocument Breakfast = new XmlDocument();
-                    //Breakfast
-                    //                    XmlNode
-                    XmlNodeList Food = XML.GetElementsByTagName("menuitem");
+                XElement Name = food.Element("name");
+                diningHall.addtoMenu(1, Name.Value);
+            }
 
-                    for(int j=0; j<Food.Count(); ++j) 
-                    {.
-                        diningHall.addtoMenu(0, Food[j].FirstChild.FirstChild.NodeValue.ToString());
-                    }
-
-                    /*IXmlNode sibling = curNode.FirstChild.NextSibling;
-                    for (int j=1; j<curNode.ChildNodes.Count(); ++j)
-                    {
-                        if (sibling.LocalName.Equals("course"))
-                        {
-                            //another for loop?
-                            diningHall.addtoMenu(0, sibling.FirstChild.FirstChild.NodeValue.ToString());
-                        }
-                        sibling = sibling.NextSibling;
-                    }
-                }
-                else if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("LUNCH"))
-                {
-
-                }
-                else if (Meals[i].FirstChild.FirstChild.NodeValue.Equals("DINNER"))
-                {
-
-                }
-            */
- 
+            XElement Dinner = (XElement)Lunch.NextNode;
+            IEnumerable<XElement> DCourses = Dinner.Elements("course");
+            IEnumerable<XElement> DFood = DCourses.Elements("menuitem");
+            foreach (XElement food in DFood)
+            {
+                XElement Name = food.Element("name");
+                diningHall.addtoMenu(2, Name.Value);
+            }
         }
 
         public BigData()
         {
             this._diningHallList = new List<DiningHall>();
-            this._searchResults = new List<SearchResult>();
+            this._searchResults = new List<SearchHit>();
             foreach (string name in BigData.hallNames)
             {
                 var newDiningHall = new DiningHall(name);
                 string url = _createURL(0, this._diningHallList.Count());
                 this._diningHallList.Add(newDiningHall);
-            }                     
+            }
         }
 
         public List<string> getDiningHallNames()
         {
             List<string> names = new List<string>();
 
-            foreach(DiningHall hall in this._diningHallList)
+            foreach (DiningHall hall in this._diningHallList)
             {
                 names.Add(hall.name());
             }
 
             return names;
+        }
+
+        public void Search(int days, string FoodName)
+        {
+            for (int i = 0; i < days; ++i)
+            {
+                for (int j = 0; i < this._diningHallList.Count(); ++j)
+                {
+                    if (this._diningHallList[j].look(i, FoodName))
+                    {
+                        this._searchResults.Add(new SearchHit(j, i));
+                    }
+                }
+            }
+
+        }
+
+        public void ChangeDate() //increment date by one and load menus
+        {
+            ++this._curDate;
+
         }
 
         private string _createURL(int Day, int Name)
@@ -203,7 +195,8 @@ namespace Dining_App.Data
 
         public void addtoMenu(int meal, string foodName)
         {
-
+            int Day = this._menu.Count() - 1;
+            this._menu[Day].addFood(new FoodItem(foodName), meal);
         }
 
         public void setName(string Name) //shouldn't ever need to use this, should be setting name with the constructor
@@ -211,7 +204,8 @@ namespace Dining_App.Data
             this._name = Name;
         }
 
-        public string name(){
+        public string name()
+        {
             return this._name;
         }
 
@@ -220,6 +214,10 @@ namespace Dining_App.Data
             return this._menu[Day];
         }
 
+        public bool look(int day, string FoodName)
+        {
+            return this._menu[day].find(FoodName);
+        }
     }
 
     class Menu
@@ -241,11 +239,11 @@ namespace Dining_App.Data
             {
                 this._breakfast.Add(OmNomNom);
             }
-            else if(Meal == (int)Meals.LUNCH)
+            else if (Meal == (int)Meals.LUNCH)
             {
                 this._lunch.Add(OmNomNom);
             }
-            else if(Meal == (int)Meals.DINNER)
+            else if (Meal == (int)Meals.DINNER)
             {
                 this._dinner.Add(OmNomNom);
             }
@@ -315,27 +313,10 @@ namespace Dining_App.Data
 
     }
 
-
-    class SearchResult
-    {
-        List<SearchHit> _hits;
-
-        public SearchResult()
-        {
-            this._hits = new List<SearchHit>();
-        }
-    }
-
     class SearchHit
     {
         private int _diningHall;
         private int _day;
-
-        public SearchHit() //default constructor with no hits
-        {
-            this._diningHall = -1;
-            this._day = -1; //no hit
-        }
 
         public SearchHit(int Hall, int Day) //constructor for positive result
         {
