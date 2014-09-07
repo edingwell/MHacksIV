@@ -123,6 +123,12 @@ namespace Dining_App.Data
 
         }
 
+        public Menu loadMenu(int day, int Hall)
+        {
+            return this._diningHallList[Hall].getMenu(day);
+
+        }
+
         private string _createURL(int Day, int Name)
         {
             string location;
@@ -231,6 +237,22 @@ namespace Dining_App.Data
             this._breakfast = new List<FoodItem>();
             this._lunch = new List<FoodItem>();
             this._dinner = new List<FoodItem>();
+        }
+
+        public List<FoodItem> loadMeal(int meal)
+        {
+            switch (meal)
+            {
+                case 0:
+                    return this._breakfast;
+                case 1:
+                    return this._lunch;
+                case 2:
+                    return this._dinner;
+                default:
+                    return this._breakfast; //really should error out
+
+            }
         }
 
         public void addFood(FoodItem OmNomNom, int Meal)
