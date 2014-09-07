@@ -1,4 +1,6 @@
 ﻿using System;
+using Dining_App.Data;
+using Dining_App.Common;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,9 +42,14 @@ namespace Dining_App
         {
             double screenHeight = Window.Current.Bounds.Height;
             mainScroll.Height = 0.80*screenHeight;
-            string dinHallName = Convert.ToString(e.Parameter);
-            nameBlock.Text = dinHallName;
+            //string dinHallName = (passingPair)e.Parameter.name;
+            passingPair menuItems = (passingPair)e.Parameter;
+            nameBlock.Text = menuItems.name;
             nameBlock.FontSize = 30;
+
+            List<FoodItem> breakfast = new List<FoodItem>();
+            List<FoodItem> lunch = new List<FoodItem>();
+            List<FoodItem> dinner = new List<FoodItem>();
 
             // We're going to load the whole menu here!
             List<string> words = new List<string>();

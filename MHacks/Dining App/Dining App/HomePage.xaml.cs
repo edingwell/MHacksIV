@@ -24,18 +24,43 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Dining_App
 {
+    struct passingPair
+    {
+        public string name;
+        public Menu hallMenu;
+    };
+    /*
+    public class passingPair
+    {
+        private string name;
+        private Menu hallMenu;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public Menu HallMenu
+        {
+            get { return hallMenu; }
+            set { hallMenu = value; }
+        }
+        
+    };
+     * */
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
         private readonly NavigationHelper navigationHelper;
-
+        BigData allDiningHallMenus = new BigData();
         private const string FirstGroupName = "DiningHallList";
 
 
         public MainPage()
         {
+            // Grab the menus from online
+            
 
             this.InitializeComponent();
             this.loadData();
@@ -127,7 +152,11 @@ namespace Dining_App
 
         private void HyperlinkButton_Click1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "Bursley");
+            Menu bursleyMenu = allDiningHallMenus.loadMenu(1, 0); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "Bursley";
+            nameHallPair.hallMenu = bursleyMenu;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click2(object sender, RoutedEventArgs e)
