@@ -220,7 +220,7 @@ namespace Dining_App
 
         private void searchNavButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SearchResultsnn));
+            this.Frame.Navigate(typeof(SearchResultsnn), allDiningHallMenus);
         }
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the

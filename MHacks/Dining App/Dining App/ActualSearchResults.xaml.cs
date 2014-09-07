@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dining_App.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -35,32 +36,13 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            scrollName.Height = 0.8*Window.Current.Bounds.Height;
+            System.Collections.Generic.List<SearchHit> searchResults = (List<SearchHit>)e.Parameter;
 
-            List<string> words = new List<string>();
-            words.Add("One\n");
-            words.Add("Two\n");
-            words.Add("Three\n");
-            words.Add("Four\n");
-            words.Add("Five\n");
-            words.Add("Six\n");
-            words.Add("Seven\n");
-            words.Add("Eight\n");
-            words.Add("Nine\n");
-            words.Add("Ten\n");
-            words.Add("Eleven\n");
-            words.Add("Twelve\n");
-            words.Add("Thirteen\n");
-            words.Add("Fourteen\n");
-            words.Add("Fifteen\n");
-            words.Add("Sixteen\n");
-
-            //double marginAboveSoFar = 10;
-            foreach (string s in words)
+            foreach (SearchHit result in searchResults)
             {
                 Run r = new Run();
-                r.Text = s;
-                r.FontSize = 50;
+                r.Text = result.getDiningHall() + " " + result.getDay().ToString() + "\n";
+                r.FontSize = 20;
                 resultsBox.Inlines.Add(r);
             }
 

@@ -357,14 +357,14 @@ namespace Dining_App.Common
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property provides the group to be displayed.</param>
         public void OnNavigatedFrom(NavigationEventArgs e)
-        {
+        {/*
             var frameState = SuspensionManager.SessionStateForFrame(this.Frame);
             var pageState = new Dictionary<String, Object>();
             if (this.SaveState != null)
             {
                 this.SaveState(this, new SaveStateEventArgs(pageState));
             }
-            frameState[_pageKey] = pageState;
+            frameState[_pageKey] = pageState; */
         }
 
         #endregion

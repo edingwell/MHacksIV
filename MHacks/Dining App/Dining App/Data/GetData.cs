@@ -22,7 +22,7 @@ namespace Dining_App.Data
 
     class BigData
     {
-        static string[] hallNames = { "Bursley", 
+        public static string[] hallNames = { "Bursley",
                                         "East Quad", 
                                         "Hill Dining Center", 
                                         "Markley", 
@@ -30,7 +30,7 @@ namespace Dining_App.Data
                                         "South Quad", 
                                         "Twigs at Oxford" };
         List<DiningHall> _diningHallList;
-        List<SearchHit> _searchResults;
+        public List<SearchHit> _searchResults;
         private int _curDate;
 
         // This function gets the menu from the url
@@ -102,6 +102,11 @@ namespace Dining_App.Data
             return names;
         }
 
+        public void clearSearch()
+        {
+            _searchResults.Clear();
+        }
+
         public void Search(int days, string FoodName)
         {
             for (int i = 0; i < days; ++i)
@@ -111,7 +116,7 @@ namespace Dining_App.Data
                     this.ChangeDate(); //update the time while we search the other stuff
                 }
 
-                for (int j = 0; i < this._diningHallList.Count(); ++j)
+                for (int j = 0; j < this._diningHallList.Count(); ++j)
                 {
                     if (this._diningHallList[j].look(i, FoodName))
                     {
@@ -344,6 +349,14 @@ namespace Dining_App.Data
     {
         private int _diningHall;
         private int _day;
+
+        public string getDiningHall() {
+            return BigData.hallNames[_diningHall];
+        }
+        public int getDay()
+        {
+            return _day;
+        }
 
         public SearchHit(int Hall, int Day) //constructor for positive result
         {

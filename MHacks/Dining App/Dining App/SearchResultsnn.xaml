@@ -34,10 +34,10 @@
                      VerticalAlignment="Top"/>
             <TextBox x:Name="dateThrough" HorizontalAlignment="Left" 
                      Margin="71,101,79,0" 
-                     Header="Within how many days?"
+                     Header="Within how many days? (1 = today)"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
-                     Width="259" Text="0"/>
+                     Width="259" Text="1"/>
             <Button x:Name="searchButton" Content="Search!" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.121,-0.326" Click="searchButton_Click"/>
 
 

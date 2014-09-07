@@ -1,4 +1,5 @@
 ﻿using Dining_App.Common;
+using Dining_App.Data;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,7 +28,7 @@ namespace Dining_App
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
-
+        BigData allDiningHallMenus;
         public SearchResultsnn()
         {
             this.InitializeComponent();
@@ -43,6 +44,12 @@ namespace Dining_App
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            allDiningHallMenus = (BigData)e.Parameter;
+            allDiningHallMenus.clearSearch();
         }
 
         /// <summary>
@@ -96,10 +103,6 @@ namespace Dining_App
         /// </summary>
         /// <param name="e">Provides data for navigation methods and event
         /// handlers that cannot cancel the navigation request.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            this.navigationHelper.OnNavigatedTo(e);
-        }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
@@ -115,7 +118,10 @@ namespace Dining_App
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(ActualSearchResults));
+            string food = foodItem.Text;
+            int days = Convert.ToInt32(dateThrough.Text);
+            allDiningHallMenus.Search(days, food);
+            this.Frame.Navigate(typeof(ActualSearchResults),allDiningHallMenus._searchResults);
         }
 
 
