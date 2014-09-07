@@ -38,7 +38,7 @@ namespace Dining_App
         {
 
             this.InitializeComponent();
-            //this.loadData();
+            this.loadData();
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
