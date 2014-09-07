@@ -26,7 +26,9 @@ namespace Dining_App
     /// </summary>
     public sealed partial class MenuPage : Page
     {
-        //bool visited = false;
+        BigData allDiningMenuItems;
+        int currentHall;
+        int currentDay;
         public MenuPage()
         {
             this.InitializeComponent();
@@ -45,13 +47,18 @@ namespace Dining_App
                 mainScroll.Height = 0.80 * screenHeight;
                 //string dinHallName = (passingPair)e.Parameter.name;
                 passingPair menuItems = (passingPair)e.Parameter;
-                nameBlock.Text = menuItems.name;
+                allDiningMenuItems = menuItems.allTheDiningHallMenus;
+                currentHall = menuItems.hall;
+                currentDay = menuItems.day;
+                nameBlock.Text = allDiningMenuItems.getHallNames(currentHall);
                 nameBlock.FontSize = 30;
+                allDiningMenuItems.ChangeDate(); //Keeping this ahead
 
+                Menu todaysMenuItems = allDiningMenuItems.loadMenu(currentDay, currentHall);
                 // We're going to load the whole menu here!
-                List<FoodItem> breakfast = menuItems.hallMenu.loadMeal(0);
-                List<FoodItem> lunch = menuItems.hallMenu.loadMeal(1);
-                List<FoodItem> dinner = menuItems.hallMenu.loadMeal(2);
+                List<FoodItem> breakfast = todaysMenuItems.loadMeal(0);
+                List<FoodItem> lunch = todaysMenuItems.loadMeal(1);
+                List<FoodItem> dinner = todaysMenuItems.loadMeal(2);
 
                 //double marginAboveSoFar = 10;
                 Run breakfastHeader = new Run();
@@ -120,6 +127,15 @@ namespace Dining_App
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
+        }
+
+        private void future_Click(object sender, RoutedEventArgs e)
+        {
+            passingPair pair = new passingPair();
+            pair.hall = currentHall;
+            pair.day = currentDay+1;
+            pair.allTheDiningHallMenus = allDiningMenuItems;
+            this.Frame.Navigate(typeof(MenuPage), pair);
         }
 
     }

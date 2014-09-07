@@ -29,6 +29,12 @@ namespace Dining_App.Data
                                         "North Quad", 
                                         "South Quad", 
                                         "Twigs at Oxford" };
+
+        public string getHallNames(int i)
+        {
+            return hallNames[i];
+        }
+
         List<DiningHall> _diningHallList;
         public List<SearchHit> _searchResults;
         private int _curDate;
@@ -85,7 +91,7 @@ namespace Dining_App.Data
             foreach (string name in BigData.hallNames)
             {
                 var newDiningHall = new DiningHall(name);
-                string url = _createURL(0, this._diningHallList.Count());
+                string url = _createURL(this._curDate, this._diningHallList.Count());
                 this._diningHallList.Add(newDiningHall);
             }
         }
@@ -179,7 +185,7 @@ namespace Dining_App.Data
             {
                 DateTime date = DateTime.Today.Date.AddDays(Day);
 
-                url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date.ToString("YYYY-MM-DD");
+                url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date.ToString("yyyy-MM-dd");
             }
             return url;
         }

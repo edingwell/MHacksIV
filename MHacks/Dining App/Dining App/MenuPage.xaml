@@ -9,14 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="backButton" 
-                Content="Back" 
-                HorizontalAlignment="Left" 
-                Height="21" 
-                Margin="5,28,0,0" 
-                VerticalAlignment="Top" 
-                Width="44" 
-                Click="backButton_Click"/>
+        <HyperlinkButton x:Name="past" 
+                         Content="&#xE2A4;" 
+                         FontFamily="Segoe UI Symbol" 
+                         HorizontalAlignment="Left" 
+                         Margin="270,30,0,0" 
+                         VerticalAlignment="Top" 
+                         Click="backButton_Click" 
+                         FontSize="40" />
         <ScrollViewer x:Name="mainScroll" 
                       HorizontalAlignment="Left" 
                       Height="500"
@@ -27,6 +27,14 @@
 
             </TextBlock>
         </ScrollViewer>
-        <TextBlock x:Name="nameBlock" Padding="10, 0, 0, 0" HorizontalAlignment="Left" Margin="114,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="276" FontSize="30" Text="Placeholder Text"/>
+        <TextBlock x:Name="nameBlock" Padding="10, 0, 0, 0" HorizontalAlignment="Left" Margin="10,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="255" FontSize="30" Text="Placeholder Text"/>
+        <HyperlinkButton x:Name="future" 
+                         Content="&#xE2A9;" 
+                         FontFamily="Segoe UI Symbol" 
+                         HorizontalAlignment="Left" 
+                         Margin="347,30,0,0" 
+                         VerticalAlignment="Top" 
+                         Click="future_Click" 
+                         FontSize="40" />
     </Grid>
 </Page>

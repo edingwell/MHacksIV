@@ -26,27 +26,11 @@ namespace Dining_App
 {
     struct passingPair
     {
-        public string name;
-        public Menu hallMenu;
+        public int hall;
+        public BigData allTheDiningHallMenus;
+        public int day;
     };
-    /*
-    public class passingPair
-    {
-        private string name;
-        private Menu hallMenu;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        public Menu HallMenu
-        {
-            get { return hallMenu; }
-            set { hallMenu = value; }
-        }
-        
-    };
-     * */
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -101,17 +85,6 @@ namespace Dining_App
             ListView mainHallList = new ListView();
             mainHallList.IsItemClickEnabled = true;
             mainHallList.ItemClick += mainHallList_ItemClick;
-            //ItemsControl mainHallItems = new ItemsControl();
-            //Binding b = new Binding();
-            //mainHallList.ItemsSource = b;
-            
-
-            
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
         }
 
         private void mainHallList_ItemClick(object sender, ItemClickEventArgs e)
@@ -157,64 +130,71 @@ namespace Dining_App
 
         private void HyperlinkButton_Click1(object sender, RoutedEventArgs e)
         {
-            Menu bursleyMenu = allDiningHallMenus.loadMenu(0, 0); //0 is Bursley
+            //Menu bursleyMenu = allDiningHallMenus.loadMenu(0, 0); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "Bursley";
-            nameHallPair.hallMenu = bursleyMenu;
+            nameHallPair.hall = 0;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click2(object sender, RoutedEventArgs e)
         {
-            Menu EastQuadMenu = allDiningHallMenus.loadMenu(0, 1); //0 is Bursley
+            //Menu EastQuadMenu = allDiningHallMenus.loadMenu(0, 1); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "East Quad";
-            nameHallPair.hallMenu = EastQuadMenu;
+            nameHallPair.hall = 1;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click3(object sender, RoutedEventArgs e)
         {
-            Menu HillDiningCenter = allDiningHallMenus.loadMenu(0, 2); //0 is Bursley
+            //Menu HillDiningCenter = allDiningHallMenus.loadMenu(0, 2); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "Hill Dining Center";
-            nameHallPair.hallMenu = HillDiningCenter;
+            nameHallPair.hall = 2;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click4(object sender, RoutedEventArgs e)
         {
-            Menu MarkleyMenu = allDiningHallMenus.loadMenu(0, 3); //0 is Bursley
+            //Menu MarkleyMenu = allDiningHallMenus.loadMenu(0, 3); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "Markley";
-            nameHallPair.hallMenu = MarkleyMenu;
+            nameHallPair.hall = 3;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click5(object sender, RoutedEventArgs e)
         {
-            Menu NorthQuadMenu = allDiningHallMenus.loadMenu(0, 4); //0 is Bursley
+          //  Menu NorthQuadMenu = allDiningHallMenus.loadMenu(0, 4); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "North Quad";
-            nameHallPair.hallMenu = NorthQuadMenu;
+            nameHallPair.hall = 4;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click6(object sender, RoutedEventArgs e)
         {
-            Menu SouthQuadMenu = allDiningHallMenus.loadMenu(0, 5); //0 is Bursley
+            //Menu SouthQuadMenu = allDiningHallMenus.loadMenu(0, 5); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "South Quad";
-            nameHallPair.hallMenu = SouthQuadMenu;
+            nameHallPair.hall = 5;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click7(object sender, RoutedEventArgs e)
         {
-            Menu TwigsMenu = allDiningHallMenus.loadMenu(0, 6); //0 is Bursley
+            //Menu TwigsMenu = allDiningHallMenus.loadMenu(0, 6); //0 is Bursley
             passingPair nameHallPair;
-            nameHallPair.name = "Twigs at Oxford";
-            nameHallPair.hallMenu = TwigsMenu;
+            nameHallPair.hall = 6;
+            nameHallPair.day = 0;
+            nameHallPair.allTheDiningHallMenus = allDiningHallMenus;
             this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
