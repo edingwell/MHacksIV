@@ -55,7 +55,7 @@ namespace Dining_App
         private readonly NavigationHelper navigationHelper;
         BigData allDiningHallMenus = new BigData();
         private const string FirstGroupName = "DiningHallList";
-
+        static bool visited = false;
 
         public MainPage()
         {
@@ -92,7 +92,12 @@ namespace Dining_App
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-            allDiningHallMenus.GetMenus(); //await?
+            if (!visited)
+            {
+                visited = true;
+                allDiningHallMenus.GetMenus(); //await?
+            }
+
             ListView mainHallList = new ListView();
             mainHallList.IsItemClickEnabled = true;
             mainHallList.ItemClick += mainHallList_ItemClick;

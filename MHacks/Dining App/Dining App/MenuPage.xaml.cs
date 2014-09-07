@@ -26,7 +26,7 @@ namespace Dining_App
     /// </summary>
     public sealed partial class MenuPage : Page
     {
-        bool visited = false;
+        //bool visited = false;
         public MenuPage()
         {
             this.InitializeComponent();
@@ -43,11 +43,10 @@ namespace Dining_App
         {
             //innerGrid.Inlines.Remove(InlineCollection.Firstline);
             // Need to remove previous nodes before entering
-            if (visited) { }
-            else
-            {
-                //innerGrid.Inlines.Clear();
-                visited = true;
+            //if (visited) { }
+            //else
+            //{
+              //  visited = true;
                 double screenHeight = Window.Current.Bounds.Height;
                 mainScroll.Height = 0.80 * screenHeight;
                 //string dinHallName = (passingPair)e.Parameter.name;
@@ -94,7 +93,7 @@ namespace Dining_App
                     r.FontSize = 20;
                     innerGrid.Inlines.Add(r);
                 }
-            }
+            //}
         }
             
             
