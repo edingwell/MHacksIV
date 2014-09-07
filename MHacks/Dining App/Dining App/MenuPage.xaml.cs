@@ -47,36 +47,44 @@ namespace Dining_App
             nameBlock.Text = menuItems.name;
             nameBlock.FontSize = 30;
 
-            List<FoodItem> breakfast = new List<FoodItem>();
-            List<FoodItem> lunch = new List<FoodItem>();
-            List<FoodItem> dinner = new List<FoodItem>();
-
             // We're going to load the whole menu here!
-            List<string> words = new List<string>();
-            words.Add("One\n");
-            words.Add("Two\n");
-            words.Add("Three\n");
-            words.Add("Four\n");
-            words.Add("Five\n");
-            words.Add("Six\n");
-            words.Add("Seven\n");
-            words.Add("Eight\n");
-            words.Add("Nine\n");
-            words.Add("Ten\n");
-            words.Add("Eleven\n");
-            words.Add("Twelve\n");
-            words.Add("Thirteen\n");
-            words.Add("Fourteen\n");
-            words.Add("Fifteen\n");
-            words.Add("Sixteen\n");
+            List<FoodItem> breakfast = menuItems.hallMenu.loadMeal(0);
+            List<FoodItem> lunch = menuItems.hallMenu.loadMeal(1);
+            List<FoodItem> dinner = menuItems.hallMenu.loadMeal(2);
 
             //double marginAboveSoFar = 10;
-            foreach (string s in words)
+            Run breakfastHeader = new Run();
+            breakfastHeader.Text = "Breakfast\n\n";
+            breakfastHeader.FontSize = 50;
+            innerGrid.Inlines.Add(breakfastHeader);
+            foreach (FoodItem f in breakfast)
             {
                 Run r = new Run();
-                r.Text = s;
-                r.FontSize = 40;
+                r.Text = f.name()+"\n";
+                r.FontSize = 20;
                 innerGrid.Inlines.Add(r); 
+            }
+            Run lunchHeader = new Run();
+            lunchHeader.Text = "Lunch\n\n";
+            lunchHeader.FontSize = 50;
+            innerGrid.Inlines.Add(lunchHeader);
+            foreach (FoodItem f in lunch)
+            {
+                Run r = new Run();
+                r.Text = f.name();
+                r.FontSize = 20;
+                innerGrid.Inlines.Add(r); 
+            }
+            Run dinnerHeader = new Run();
+            dinnerHeader.Text = "Dinner\n\n";
+            dinnerHeader.FontSize = 50;
+            innerGrid.Inlines.Add(dinnerHeader);
+            foreach (FoodItem f in dinner)
+            {
+                Run r = new Run();
+                r.Text = f.name()+"\n";
+                r.FontSize = 20;
+                innerGrid.Inlines.Add(r);
             }
         }
             

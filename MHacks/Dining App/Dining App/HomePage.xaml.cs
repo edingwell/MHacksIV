@@ -92,7 +92,7 @@ namespace Dining_App
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             // TODO: Prepare page for display here.
-
+            allDiningHallMenus.GetMenus(); //await?
             ListView mainHallList = new ListView();
             mainHallList.IsItemClickEnabled = true;
             mainHallList.ItemClick += mainHallList_ItemClick;
@@ -152,7 +152,7 @@ namespace Dining_App
 
         private void HyperlinkButton_Click1(object sender, RoutedEventArgs e)
         {
-            Menu bursleyMenu = allDiningHallMenus.loadMenu(1, 0); //0 is Bursley
+            Menu bursleyMenu = allDiningHallMenus.loadMenu(0, 0); //0 is Bursley
             passingPair nameHallPair;
             nameHallPair.name = "Bursley";
             nameHallPair.hallMenu = bursleyMenu;
@@ -161,37 +161,37 @@ namespace Dining_App
 
         private void HyperlinkButton_Click2(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "East Quad");
+           // this.Frame.Navigate(typeof(MenuPage), "East Quad");
         }
 
         private void HyperlinkButton_Click3(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "Hill Dining Center");
+           // this.Frame.Navigate(typeof(MenuPage), "Hill Dining Center");
         }
 
         private void HyperlinkButton_Click4(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "Markley");
+            //this.Frame.Navigate(typeof(MenuPage), "Markley");
         }
 
         private void HyperlinkButton_Click5(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "North Quad");
+           // this.Frame.Navigate(typeof(MenuPage), "North Quad");
         }
 
         private void HyperlinkButton_Click6(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "South Quad");
+            //this.Frame.Navigate(typeof(MenuPage), "South Quad");
         }
 
         private void HyperlinkButton_Click7(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(MenuPage), "Twigs at Oxford");
+            //this.Frame.Navigate(typeof(MenuPage), "Twigs at Oxford");
         }
 
         private void searchNavButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(SearchResultsnn));
+            //this.Frame.Navigate(typeof(SearchResultsnn));
         }
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
