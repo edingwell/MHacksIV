@@ -35,6 +35,8 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            scrollName.Height = 0.8*Window.Current.Bounds.Height;
+
             List<string> words = new List<string>();
             words.Add("One\n");
             words.Add("Two\n");
@@ -62,11 +64,6 @@ namespace Dining_App
                 resultsBox.Inlines.Add(r);
             }
 
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //this.Frame.Navigate(typeof(HomePage));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

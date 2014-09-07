@@ -16,8 +16,7 @@
         </Grid.ChildrenTransitions>
 
 
-        <TextBlock Text="Dining Hall App" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,26,-10,-14"/>
-        <Button Content="Back" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="0,96,231,486" Click="Button_Click" Width="108" BorderBrush="{x:Null}"/>
+        <TextBlock Text="Dining Hall App" Style="{ThemeResource TitleTextBlockStyle}" Margin="10,26,-10,583"/>
         <TextBlock Text="Search" 
             	Margin="223,85,0,468" 
             	Style="{ThemeResource HeaderTextBlockStyle}" 
@@ -26,21 +25,23 @@
         <!--TODO: Content should be placed within the following grid-->
         <Grid 
               x:Name="ContentRoot" 
-              Margin="20,251,0,29" RenderTransformOrigin="0.508,0.481">
+              Margin="0,251,0,29" RenderTransformOrigin="0.508,0.481">
             <TextBox x:Name="foodItem" 
+                     Width="250px"
                      Header="Food Item"
-                     Margin="62,0,59,0" 
+                     Margin="71,10,79,0" 
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"/>
             <TextBox x:Name="dateThrough" HorizontalAlignment="Left" 
-                     Margin="62,101,0,0" 
+                     Margin="71,101,79,0" 
                      Header="Within how many days?"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top" 
                      Width="259" Text="0"/>
-            <Button x:Name="searchButton" Content="Search!" HorizontalAlignment="Left" Margin="123,205,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.121,-0.326" Click="searchButton_Click"/>
+            <Button x:Name="searchButton" Content="Search!" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.121,-0.326" Click="searchButton_Click"/>
 
 
         </Grid>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="20,98,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Click="Button_Click" Height="31" Width="98"/>
     </Grid>
 </Page>

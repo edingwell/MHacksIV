@@ -118,5 +118,6 @@ namespace Dining_App
             this.Frame.Navigate(typeof(ActualSearchResults));
         }
 
+
     }
 }

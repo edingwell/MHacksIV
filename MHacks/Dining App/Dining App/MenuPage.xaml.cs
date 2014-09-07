@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -37,9 +38,11 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            double screenHeight = Window.Current.Bounds.Height;
+            mainScroll.Height = 0.80*screenHeight;
             string dinHallName = Convert.ToString(e.Parameter);
             nameBlock.Text = dinHallName;
-            nameBlock.FontSize = 50;
+            nameBlock.FontSize = 30;
 
             // We're going to load the whole menu here!
             List<string> words = new List<string>();
@@ -65,7 +68,7 @@ namespace Dining_App
             {
                 Run r = new Run();
                 r.Text = s;
-                r.FontSize = 50;
+                r.FontSize = 40;
                 innerGrid.Inlines.Add(r); 
             }
         }

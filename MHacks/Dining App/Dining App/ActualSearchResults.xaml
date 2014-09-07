@@ -11,7 +11,6 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Height="71" Margin="229,25,0,0" TextWrapping="Wrap" Text="Results" VerticalAlignment="Top" Width="161" FontSize="50"/>
         <Button Content="Back" HorizontalAlignment="Left" Height="46" Margin="10,35,0,0" VerticalAlignment="Top" Width="85" Click="Button_Click_1" BorderThickness="0"/>
-        <Button Content="Home" HorizontalAlignment="Left" Height="20" Margin="115,35,0,0" VerticalAlignment="Top" Width="55" Click="Button_Click" BorderThickness="0"/>
         <ScrollViewer x:Name="scrollName" HorizontalAlignment="Left" 
                       Height="522" 
                       Margin="0,118,0,0" 
@@ -19,7 +18,7 @@
                       Width="400">
             <TextBlock x:Name="resultsBox"  
                        TextWrapping="Wrap" 
-                       Width="279">
+                       Width="279" HorizontalAlignment="Center">
                 
             </TextBlock>
         </ScrollViewer>

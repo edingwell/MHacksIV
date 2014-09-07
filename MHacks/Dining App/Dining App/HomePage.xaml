@@ -21,11 +21,10 @@
     <Grid Margin="0,-16.667,0,-0.333">
 
         <StackPanel HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="400" Margin="0,27,0,0">
-            <TextBox x:Name="appTitle" Margin="0" TextWrapping="Wrap" Text="Michigan Dining" VerticalAlignment="Stretch" TextChanged="appTitle_TextChanged" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}"/>
+            <TextBlock TextWrapping="Wrap" Text="Umich Dining" FontSize="20" TextAlignment="Center"/>
         </StackPanel>
         <Grid HorizontalAlignment="Center" Height="42" VerticalAlignment="Top" Width="350" Margin="26,89,24,0">
-            <Button x:Name="todayButton" Content="Today" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,-6,0,-9" Width="134"/>
-            <Button x:Name="searchNavButton" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,-6,0,-9" Width="137" Click="searchNavButton_Click"/>
+            <Button x:Name="searchNavButton" Content="Search" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="78,-10,79,-5" Width="193" Click="searchNavButton_Click"/>
         </Grid>
         <Grid x:Name="body" HorizontalAlignment="Center" Height="538" VerticalAlignment="Top" Width="400" Margin="0,119,0,0">
             <ListView 
