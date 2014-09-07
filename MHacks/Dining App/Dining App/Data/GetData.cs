@@ -13,11 +13,11 @@ using System.Text;
 using System.Net.Http;
 using Windows.Data.Xml.Dom;
 
-
 namespace Dining_App.Data
 {
     enum Halls { BURSLEY, EQUAD, HILL, MARKLEY, NQUAD, SQUAD, TWIGS };
     enum Meals { BREAKFAST, LUNCH, DINNER };
+
 
 
     class BigData
@@ -29,8 +29,8 @@ namespace Dining_App.Data
                                         "North Quad", 
                                         "South Quad", 
                                         "Twigs at Oxford" };
-        private List<DiningHall> _diningHallList;
-        private List<SearchHit> _searchResults;
+        List<DiningHall> _diningHallList;
+        List<SearchHit> _searchResults;
         private int _curDate;
 
         // This function gets the menu from the url
@@ -132,7 +132,6 @@ namespace Dining_App.Data
         private string _createURL(int Day, int Name)
         {
             string location;
-            string date;
             string url;
             switch (Name)
             {
@@ -163,22 +162,22 @@ namespace Dining_App.Data
             }
             if (Day == 0)
             {
-                date = "today";
+                url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=today";
             }
             else
             {
-                date = "today";
-                //TODO: add parsing for other days
+                DateTime date = DateTime.Today.Date.AddDays(Day);
+
+                url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date.ToString("YYYY-MM-DD");
             }
-            url = "http://www.housing.umich.edu/files/helper_files/js/menu2xml.php?location=" + location + "&date=" + date;
             return url;
         }
     }
 
     class DiningHall
     {
-        private string _name;
-        private List<Menu> _menu; //indexed by days from today
+        string _name;
+        List<Menu> _menu; //indexed by days from today
 
         public DiningHall()
         {
@@ -228,9 +227,9 @@ namespace Dining_App.Data
 
     class Menu
     {
-        private List<FoodItem> _breakfast;
-        private List<FoodItem> _lunch;
-        private List<FoodItem> _dinner;
+        List<FoodItem> _breakfast;
+        List<FoodItem> _lunch;
+        List<FoodItem> _dinner;
 
         public Menu()
         {
@@ -309,7 +308,7 @@ namespace Dining_App.Data
 
     class FoodItem
     {
-        private string _name;
+        string _name;
         private bool _mHealthy;
         private bool _vegan;
         private bool _vegetarian;
