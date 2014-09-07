@@ -41,12 +41,6 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //innerGrid.Inlines.Remove(InlineCollection.Firstline);
-            // Need to remove previous nodes before entering
-            //if (visited) { }
-            //else
-            //{
-              //  visited = true;
                 double screenHeight = Window.Current.Bounds.Height;
                 mainScroll.Height = 0.80 * screenHeight;
                 //string dinHallName = (passingPair)e.Parameter.name;
@@ -66,6 +60,14 @@ namespace Dining_App
                 innerGrid.Inlines.Add(breakfastHeader);
                 foreach (FoodItem f in breakfast)
                 {
+                    if (f.name().Contains("serving") || f.name().Contains("Serving"))
+                    {
+                        Run r2 = new Run();
+                        r2.Text = "Not Open\n";
+                        r2.FontSize = 20;
+                        innerGrid.Inlines.Add(r2);
+                        break;
+                    }
                     Run r = new Run();
                     r.Text = f.name() + "\n";
                     r.FontSize = 20;
@@ -77,6 +79,14 @@ namespace Dining_App
                 innerGrid.Inlines.Add(lunchHeader);
                 foreach (FoodItem f in lunch)
                 {
+                    if (f.name().Contains("serving") || f.name().Contains("Serving"))
+                    {
+                        Run r2 = new Run();
+                        r2.Text = "Not Open\n";
+                        r2.FontSize = 20;
+                        innerGrid.Inlines.Add(r2);
+                        break;
+                    }
                     Run r = new Run();
                     r.Text = f.name() + "\n";
                     r.FontSize = 20;
@@ -88,12 +98,19 @@ namespace Dining_App
                 innerGrid.Inlines.Add(dinnerHeader);
                 foreach (FoodItem f in dinner)
                 {
+                    if (f.name().Contains("serving") || f.name().Contains("Serving"))
+                    {
+                        Run r2 = new Run();
+                        r2.Text = "Not Open\n";
+                        r2.FontSize = 20;
+                        innerGrid.Inlines.Add(r2);
+                        break;
+                    }
                     Run r = new Run();
                     r.Text = f.name() + "\n";
                     r.FontSize = 20;
                     innerGrid.Inlines.Add(r);
                 }
-            //}
         }
             
             
