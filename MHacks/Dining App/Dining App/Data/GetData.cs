@@ -106,6 +106,11 @@ namespace Dining_App.Data
         {
             for (int i = 0; i < days; ++i)
             {
+                if (days > this._curDate)
+                {
+                    this.ChangeDate(); //update the time while we search the other stuff
+                }
+
                 for (int j = 0; i < this._diningHallList.Count(); ++j)
                 {
                     if (this._diningHallList[j].look(i, FoodName))
@@ -117,9 +122,10 @@ namespace Dining_App.Data
 
         }
 
-        public void ChangeDate() //increment date by one and load menus
+        public async void ChangeDate() //increment date by one and load menus
         {
             ++this._curDate;
+            await this.GetMenus();
 
         }
 
