@@ -38,7 +38,7 @@ namespace Dining_App
         {
 
             this.InitializeComponent();
-            this.loadData();
+            //this.loadData();
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
             this.navigationHelper = new NavigationHelper(this);
@@ -158,6 +158,11 @@ namespace Dining_App
         private void HyperlinkButton_Click7(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MenuPage), "Twigs at Oxford");
+        }
+
+        private void searchNavButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SearchResultsnn));
         }
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the

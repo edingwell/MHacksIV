@@ -21,14 +21,12 @@ namespace Dining_App
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MenuPage : Page
+    public sealed partial class ActualSearchResults : Page
     {
-        public MenuPage()
+        public ActualSearchResults()
         {
             this.InitializeComponent();
         }
-
-        
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -37,11 +35,6 @@ namespace Dining_App
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string dinHallName = Convert.ToString(e.Parameter);
-            nameBlock.Text = dinHallName;
-            nameBlock.FontSize = 50;
-
-            // We're going to load the whole menu here!
             List<string> words = new List<string>();
             words.Add("One\n");
             words.Add("Two\n");
@@ -66,18 +59,19 @@ namespace Dining_App
                 Run r = new Run();
                 r.Text = s;
                 r.FontSize = 50;
-                innerGrid.Inlines.Add(r); 
+                resultsBox.Inlines.Add(r);
             }
+
         }
-            
-            
-        
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Frame.Navigate(typeof(HomePage));
+        }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Frame.GoBack();
         }
-
     }
 }
