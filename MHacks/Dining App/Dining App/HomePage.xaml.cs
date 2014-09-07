@@ -161,37 +161,61 @@ namespace Dining_App
 
         private void HyperlinkButton_Click2(object sender, RoutedEventArgs e)
         {
-           // this.Frame.Navigate(typeof(MenuPage), "East Quad");
+            Menu EastQuadMenu = allDiningHallMenus.loadMenu(0, 1); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "East Quad";
+            nameHallPair.hallMenu = EastQuadMenu;
+           this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click3(object sender, RoutedEventArgs e)
         {
-           // this.Frame.Navigate(typeof(MenuPage), "Hill Dining Center");
+            Menu HillDiningCenter = allDiningHallMenus.loadMenu(0, 2); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "Hill Dining Center";
+            nameHallPair.hallMenu = HillDiningCenter;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click4(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(MenuPage), "Markley");
+            Menu MarkleyMenu = allDiningHallMenus.loadMenu(0, 3); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "Markley";
+            nameHallPair.hallMenu = MarkleyMenu;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click5(object sender, RoutedEventArgs e)
         {
-           // this.Frame.Navigate(typeof(MenuPage), "North Quad");
+            Menu NorthQuadMenu = allDiningHallMenus.loadMenu(0, 4); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "North Quad";
+            nameHallPair.hallMenu = NorthQuadMenu;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click6(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(MenuPage), "South Quad");
+            Menu SouthQuadMenu = allDiningHallMenus.loadMenu(0, 5); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "South Quad";
+            nameHallPair.hallMenu = SouthQuadMenu;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void HyperlinkButton_Click7(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(MenuPage), "Twigs at Oxford");
+            Menu TwigsMenu = allDiningHallMenus.loadMenu(0, 6); //0 is Bursley
+            passingPair nameHallPair;
+            nameHallPair.name = "Twigs at Oxford";
+            nameHallPair.hallMenu = TwigsMenu;
+            this.Frame.Navigate(typeof(MenuPage), nameHallPair);
         }
 
         private void searchNavButton_Click(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(SearchResultsnn));
+            this.Frame.Navigate(typeof(SearchResultsnn));
         }
         /// <summary>
         /// Preserves state associated with this page in case the application is suspended or the
