@@ -51,6 +51,8 @@ namespace Dining_App
                 currentHall = menuItems.hall;
                 currentDay = menuItems.day;
                 nameBlock.Text = allDiningMenuItems.getHallNames(currentHall);
+                DateTime datetimething = DateTime.Today.Date.AddDays(currentDay);
+                menuDate.Text = datetimething.DayOfWeek + " " + datetimething.ToString("MM/dd");
                 nameBlock.FontSize = 30;
                 allDiningMenuItems.ChangeDate(); //Keeping this ahead
 
