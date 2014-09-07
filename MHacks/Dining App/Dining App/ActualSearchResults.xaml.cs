@@ -41,9 +41,14 @@ namespace Dining_App
             foreach (SearchHit result in searchResults)
             {
                 Run r = new Run();
-                r.Text = result.getDiningHall() + " " + result.getDay().ToString() + "\n";
-                r.FontSize = 20;
+                Run s = new Run();
+                DateTime date = DateTime.Today.Date.AddDays(result.getDay());
+                r.Text = result.getDiningHall() +  "\n";
+                s.Text = date.DayOfWeek + " " + date.ToString("MM/dd") + "\n";
+                r.FontSize = 28;
+                s.FontSize = 18;
                 resultsBox.Inlines.Add(r);
+                resultsBox.Inlines.Add(s);
             }
 
         }
